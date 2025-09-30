@@ -49,7 +49,6 @@ public sealed class BordersSystem : ISystem
                 this.HandleBorders(ref move.Direction, body.Body);
             }
         }
-
     }
 
     private void HandleBorders(ref Vector3 direction, Rigidbody body)

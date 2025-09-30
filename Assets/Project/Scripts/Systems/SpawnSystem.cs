@@ -19,7 +19,6 @@ public sealed class SpawnSystem : ISystem
 
     private Stash<AnimalComponent> animalComponentStash = null!;
     private Stash<PhysicBodyComponent> physicBodyComponentStash = null!;
-    // private Stash<MoveComponent> moveComponentStash = null!;
 
     private float spawnInterval;
     private float loopTime;
@@ -33,7 +32,6 @@ public sealed class SpawnSystem : ISystem
     {
         this.animalComponentStash = this.World.GetStash<AnimalComponent>();
         this.physicBodyComponentStash = this.World.GetStash<PhysicBodyComponent>();
-        // this.moveComponentStash = this.World.GetStash<MoveComponent>();
 
         this.spawnInterval = Random.Range(1.0f, 2.0f);
     }
@@ -72,13 +70,6 @@ public sealed class SpawnSystem : ISystem
             ref var animalComponent = ref this.animalComponentStash.Add(animalEntity);
             animalComponent.Type = animalData.Type;
 
-            // ref var moveComponent = ref this.moveComponentStash.Add(animalEntity);
-            // moveComponent.Direction = new Vector3
-            // (
-            //     Random.Range(-1.0f, 1.0f),
-            //     0.0f,
-            //     Random.Range(-1.0f, 1.0f)
-            // ).normalized;
             if (animalData.Type == AnimalType.PREDATOR)
             {
                 ref var move = ref this.World.GetStash<LinearMoveComponent>().Add(animalEntity);
@@ -103,7 +94,6 @@ public sealed class SpawnSystem : ISystem
             }
         }
     }
-
 
     private Vector3 GetRandomPointOnGround()
     {
